@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:thin,extra-light,light,100,200,300,400,500,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body {
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #181818;
+}
+
+button {
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+    padding: 15px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #FFBC01;;
+    color: black;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e2a601;
+}
+
+input, textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    color: #494949;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input[type="email"], input[type="password"], input[type="submit"], input[type="email"] {
+    padding: 16px 15px;
+    border-radius: 8px;
+    margin: 8px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
