@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {login} from '../../api/auth';
+import {getCurrentUser} from '../../api/users';
 import '../../styles.css';
 import '../Login/login.css';
 import logo from '../../assets/logo.svg';
+import {saveUserToLocalStorage} from '../../utils/authHelper';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -13,8 +15,14 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            console.log(await login(email, password));
-            navigate('/dashboard');
+            await login(email, password);
+            const response = await getCurrentUser();
+
+            console.log('Login successful:', response);
+
+            saveUserToLocalStorage(response);
+
+            navigate('/');
         } catch (error) {
             console.error('Login failed:', error.message);
         }

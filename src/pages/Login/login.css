@@ -11,7 +11,6 @@
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 30px 0 30px 0;
-
     transform: translate(-35%, 3%);
 }
 
@@ -22,20 +21,20 @@
 }
 
 .login-container input {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .login-container button {
-    margin-top: 20px; /* Add extra space below the email form group */
+    margin-top: 20px;
 }
 
 
 .new-user-prompt {
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 
 .new-user-prompt a {
-    color: #FFBC01FF; /* Adjust color as needed */
+    color: #FFBC01FF;
     text-decoration: none;
 }
 
@@ -47,11 +46,11 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 50%; /* Covers the right half of the screen */
+    width: 50%;
     height: 100%;
-    background-image: url('../../assets/login-background.png'); /* Path to your image */
-    background-size: 95% auto; /* Scale the image to cover the area */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    z-index: -1; /* Ensure it’s behind other content */
+    background-image: url('../../assets/login-background.png');
+    background-size: 95% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
 }

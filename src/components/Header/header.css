@@ -1,0 +1,147 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    margin-left: 40px;
+    max-height: 30px; /* Adjust logo size */
+    display: inline-block;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #FFBC01;
+}
+
+.search-form {
+    display: flex;
+    margin-right: 100px;
+    align-items: center;
+    flex-direction: row;
+    width: 284px;
+}
+
+.search-input {
+    height: 40px;
+    flex-shrink: 0;
+    background: #F7F7F7;
+    border: none;
+    outline: none;
+}
+
+.search-icon {
+    transform: translate(35%, 0%);
+}
+
+.header_user-section {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.sign-in-link {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+}
+
+.sign-in-link:hover {
+    color: #FFBC01;
+}
+
+.user-name {
+    font-size: 16px;
+    color: #333;
+}
+
+.links-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.links-container a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 16px;
+    /*font-weight: 500;*/
+    transition: color 0.3s ease;
+}
+
+.links-container a:hover {
+    color: #FFBC01;
+}
+
+.links-container a:active,
+.links-container a:focus {
+    color: #FFBC01;
+}
+
+.header_user-info {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    gap: 10px; /* Space between the image and the name */
+}
+
+.header_user-info img {
+    width: 30px; /* Adjust as needed */
+    height: 30px;
+    border-radius: 50%; /* Makes the image a circle, if it's a profile picture */
+}
+
+.header_user-name {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.header_user-name:hover {
+    color: #FFBC01;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+}

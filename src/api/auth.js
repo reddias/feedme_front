@@ -5,7 +5,12 @@ export const login = async (email, password) => {
     try {
         const response = await api.post('/auth/login', {email, password});
 
-        localStorage.setItem('token', response.data.token);
+        const authHeader = response.headers;
+
+        if (authHeader && authHeader['authorization']) {
+            const token = authHeader['authorization'];
+            localStorage.setItem('token', token);
+        }
         return response.data;
     } catch (error) {
         handleApiError(error);
