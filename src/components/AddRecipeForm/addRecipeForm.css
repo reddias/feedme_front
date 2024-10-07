@@ -1,0 +1,169 @@
+.add-recipe-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.add-recipe-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.form-section label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input::placeholder {
+    color: #DADADA; /* Change this to your desired color */
+    opacity: 1; /* Optional: Ensure full opacity */
+}
+
+.add-recipe-form input,
+.add-recipe-form textarea {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #DADADA;
+    border-radius: 10px;
+}
+
+.add-recipe-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    min-height: 80px;
+    max-height: 400px;
+    resize: vertical;
+}
+
+.ingredient-input input {
+    margin-right: 10px;
+    padding: 10px;
+    flex: 1;
+}
+
+.add-ingredient-button {
+    padding: 9px 15px;
+}
+
+
+.photo-preview {
+    margin-top: 10px;
+}
+
+.photo-thumbnail {
+    width: 100%;
+    max-height: 200px; /* Set a max-height for the preview */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+
+.remove-photo-button {
+    border-radius: 10px;
+    padding: 12px 20px 12px 20px;
+    margin-right: 20px;
+    background: none;
+    color: #FFBC01;
+    border: 2px solid #FFBC01;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.remove-photo-button:hover {
+    background: #FFBC01;
+    color: black;
+}
+
+.ingredient-input,
+.instruction-input {
+    display: flex;
+    align-items: center;
+}
+
+.ingredient-list,
+.instruction-list {
+    list-style-type: none;
+    padding-left: 15px;
+}
+
+.ingredient-item,
+.instruction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.remove-ingredient,
+.remove-instruction {
+    background: none;
+    border: none;
+    color: #FF0000;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.remove-ingredient:hover,
+.remove-instruction:hover {
+    background: none;
+    color: #494949;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: auto;
+}
+
+.cancel-button,
+.save-button {
+    font-size: 16px;
+    padding: 12px 20px 12px 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cancel-button {
+    margin-right: 12px;
+    background: none;
+    color: #FFBC01;
+    border: 2px solid #FFBC01;
+}
+
+.cancel-button:hover {
+    background: #FFBC01;
+    color: black;
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .add-recipe-card {
+        padding: 20px;
+    }
+
+    .add-recipe-title {
+        font-size: 24px;
+    }
+
+    .form-section {
+        margin-bottom: 15px;
+    }
+}

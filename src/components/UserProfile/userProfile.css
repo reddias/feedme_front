@@ -7,6 +7,7 @@
 .user-profile-container {
     margin-top: 20px;
     margin-left: 220px;
+    margin-right: 220px;
     padding: 20px;
     max-width: 87%;
     flex: 1;
@@ -49,6 +50,26 @@
 
 .tabs {
     display: flex;
+}
+
+.tabs-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.add-recipe-btn {
+    background-color: #FFBC01;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.add-recipe-btn:hover {
+    background-color: #e0a700;
 }
 
 .tab-link {

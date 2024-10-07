@@ -4,7 +4,7 @@ import Modal from '../../Modal/Modal';
 import RecipeView from '../../RecipeView/RecipeView';
 import {getRecipeById, cloneRecipe, deleteRecipe, updateRecipe} from '../../../api/recipes';
 
-const RecipeCard = ({recipe, isUserRecipe, onDelete, isAdmin = 0}) => {
+const RecipeCard = ({recipe, isUserRecipe, onDelete}) => {
     const {
         id,
         title,
@@ -21,7 +21,8 @@ const RecipeCard = ({recipe, isUserRecipe, onDelete, isAdmin = 0}) => {
     const [detailedRecipe, setDetailedRecipe] = useState(null); // State to store fetched recipe details
     const dropdownRef = useRef(null);
 
-    const toggleDropdown = () => {
+    const toggleDropdown = (e) => {
+        e.stopPropagation();  // Prevent modal opening on dropdown click
         setDropdownOpen(prevState => !prevState);
     };
 
@@ -38,11 +39,10 @@ const RecipeCard = ({recipe, isUserRecipe, onDelete, isAdmin = 0}) => {
         };
     }, []);
 
-    const truncatedDescription = description.length > 150
-        ? description.slice(0, 150) + '...'
+    const truncatedDescription = description.length > 100
+        ? description.slice(0, 100) + '...'
         : description;
 
-    // Fetch single recipe by ID
     const fetchRecipeById = async (recipeId) => {
         const response = await getRecipeById(recipeId);
         setDetailedRecipe(response.data);
@@ -69,10 +69,6 @@ const RecipeCard = ({recipe, isUserRecipe, onDelete, isAdmin = 0}) => {
         }
     };
 
-    const changeRecipe = async () => {
-        await updateRecipe(id);
-    };
-
     const openModal = async () => {
         await fetchRecipeById(id);
         setModalOpen(true);
@@ -84,36 +80,32 @@ const RecipeCard = ({recipe, isUserRecipe, onDelete, isAdmin = 0}) => {
 
     return (
         <>
-            <div className="recipe-card" onClick={openModal}>
-                <div className="recipe-image">
+            <div className="recipe-card-component" onClick={openModal}>
+                <div className="recipe-card-image">
                     {photo_url ? (
                         <img src={photo_url} alt={title}/>
                     ) : (
-                        <div className="no-image">No Image</div>
+                        <div className="recipe-card-no-image">No Image</div>
                     )}
                 </div>
-                <div className="recipe-info">
-                    <div className="recipe-header">
-                        <h2 className="recipe-title">{title}</h2>
-                    </div>
-                    <p className="recipe-description">{truncatedDescription}</p>
-                    <div className="recipe-buttons">
-                        <p className="recipe-stats">Views: {view_count}</p>
-                        <p className="recipe-stats">Likes: {likes_count}</p>
-                        <p className="recipe-stats">Comments: {comments_count}</p>
-                        <p className="recipe-creator">Creator: {creator_name}</p>
+                <div className="recipe-card-info">
+                    <p className="recipe-card-title">{title}</p>
+                    <p className="recipe-card-description">{truncatedDescription}</p>
+                    <div className="recipe-card-stats">
+                        <span>👁 {view_count}</span>
+                        <span>❤️ {likes_count}</span>
+                        <span>💬 {comments_count}</span>
                     </div>
                 </div>
-                {!isAdmin &&
-                <div className="dropdown" ref={dropdownRef} onClick={(e) => e.stopPropagation()}>
-                    <button className="dropdown-toggle" onClick={toggleDropdown}>
+                <div className="recipe-card-dropdown" ref={dropdownRef} onClick={(e) => e.stopPropagation()}>
+                    <button className="recipe-card-dropdown-toggle" onClick={toggleDropdown}>
                         &#x2026;
                     </button>
                     {isDropdownOpen && (
-                        <ul className="dropdown-menu">
+                        <ul className="recipe-card-dropdown-menu">
                             {isUserRecipe ? (
                                 <>
-                                    <li onClick={changeRecipe}>Edit Recipe</li>
+                                    <li>Edit Recipe</li>
                                     <li onClick={removeRecipe}>Delete Recipe</li>
                                 </>
                             ) : (
@@ -121,9 +113,8 @@ const RecipeCard = ({recipe, isUserRecipe, onDelete, isAdmin = 0}) => {
                             )}
                         </ul>
                     )}
-                </div>}
+                </div>
             </div>
-            {/* Modal for full recipe details */}
             {detailedRecipe && (
                 <Modal isOpen={isModalOpen} onClose={closeModal}>
                     <RecipeView recipe={detailedRecipe}/>

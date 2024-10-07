@@ -25,6 +25,12 @@ const Recipes = ({ isUserPage }) => {
         }
     };
 
+    const handleDeleteRecipe = (deletedRecipeId) => {
+        setRecipes((prevRecipes) =>
+            prevRecipes.filter((recipe) => recipe.id !== deletedRecipeId)
+        );
+    };
+
     return (
         <div className="recipes-container">
             {loading ? (
@@ -36,7 +42,8 @@ const Recipes = ({ isUserPage }) => {
                             <RecipeCard
                                 key={recipe.id}
                                 recipe={recipe}
-                                isUserRecipe={isUserPage} // Pass true if it's the user's page
+                                isUserRecipe={isUserPage}
+                                onDelete={handleDeleteRecipe}
                             />
                         ))
                     ) : (

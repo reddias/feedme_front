@@ -30,9 +30,9 @@ export const getCurrentUser = async () => {
     }
 };
 
-export const getUsers = async (page = 1) => {
+export const getUsers = async () => {
     try {
-        const response = await api.get('/users', { params: { page } });
+        const response = await api.get('/users');
         return response.data;
     } catch (error) {
         handleApiError(error);

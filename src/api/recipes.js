@@ -2,24 +2,12 @@ import api from './api';
 import {handleApiError} from "../utils/errorHandler";
 
 export const createRecipe = async (recipeData) => {
-    try {
-        const formData = new FormData();
-        for (let key in recipeData) {
-            if (key === 'ingredients') {
-                recipeData.ingredients.forEach((ingredient, index) => {
-                    formData.append(`ingredients[${index}][name]`, ingredient.name);
-                    formData.append(`ingredients[${index}][measurement]`, ingredient.measurement);
-                });
-            } else if (key === 'photo') {
-                formData.append('photo', recipeData.photo);
-            } else {
-                formData.append(key, recipeData[key]);
-            }
-        }
 
-        const response = await api.post('/recipes', formData, {
+    try {
+        const response = await api.post('/recipes', recipeData, {
             headers: { 'Content-Type': 'multipart/form-data' },
         });
+
         return response.data;
     } catch (error) {
         handleApiError(error);
@@ -90,7 +78,7 @@ export const cloneRecipe = async (id) => {
 
 export const getPopularRecipes = async () => {
     try {
-        const response = await api.get('/recipes/popular');
+        const response = await api.get('/recipes/mostPopular');
         return response.data;
     } catch (error) {
         handleApiError(error);

@@ -1,0 +1,35 @@
+.list-renderer-container {
+    margin-left: 35px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.list-renderer-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.list-renderer-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-renderer-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.list-renderer-item:last-child {
+    border-bottom: none;
+}
+
+.list-renderer-empty {
+    color: #999;
+    padding: 10px;
+    text-align: center;
+}

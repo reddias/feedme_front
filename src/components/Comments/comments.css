@@ -1,0 +1,101 @@
+
+.new-comments-section {
+    margin-top: 10px;
+    padding: 50px 50px 20px 50px;
+}
+
+.comment-input {
+    display: flex;
+    margin-bottom: 30px;
+    align-items: center; /* Align items vertically */
+}
+
+.comment-input input {
+    flex-grow: 1;
+    font-family: Nunito, sans-serif;
+    font-size: 14px;
+    padding: 10px; /* Add padding for better height consistency */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    height: 40px; /* Ensure consistent height */
+    box-sizing: border-box;
+}
+
+.comment-input button {
+    background-color: #FFBC01; /* Yellow background */
+    color: white;
+    border: none;
+    height: 40px; /* Same height as the input field */
+    width: 100px;
+    border-radius: 10px;
+    margin-left: 10px; /* Add space between input and button */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center text inside the button */
+}
+
+/* New Comments List Styling */
+.new-comments-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.new-comment-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.new-comment-user-photo {
+    margin-right: 10px;
+}
+
+.new-comment-user-photo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.new-no-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+}
+
+.new-comment-content {
+    flex-grow: 1;
+}
+
+.new-comment-author {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.new-comment-text {
+    margin: 0;
+}
+
+.new-comment-time {
+    color: #aaa;
+    font-size: 12px;
+    margin-left: auto; /* Aligns the time to the right */
+}
+
+.new-placeholder-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #888;
+}
