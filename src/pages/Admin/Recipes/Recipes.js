@@ -44,7 +44,6 @@ const Recipes = () => {
                     <div>Comments</div>
                 </div>
 
-                {/* Recipe rows */}
                 {recipesToDisplay.map(recipe => (
                     <div className="recipe-item" key={recipe.id}>
                         <div>{recipe.title}</div>
@@ -53,7 +52,6 @@ const Recipes = () => {
                         <div>{recipe.likes_count}</div>
                         <div>{recipe.comments_count}</div>
 
-                        {/* Actions menu */}
                         <div className="recipe-options">
                             <button
                                 className="options-btn"
@@ -104,7 +102,6 @@ const Recipes = () => {
                         </span>
                     </div>
 
-                    {/* Render Recipe List */}
                     {renderRecipeList()}
                 </div>
             </div>

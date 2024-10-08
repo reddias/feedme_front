@@ -12,6 +12,7 @@ import NavigationDrawer from "./components/Admin/NavigationDrawer/NavigationDraw
 import Statistics from "./pages/Admin/Statistics/Statistics";
 import Users from "./pages/Admin/Users/Users";
 import Recipes from "./pages/Admin/Recipes/Recipes";
+import SettingsPage from "./pages/Admin/Settings/Settings";
 
 const App = () => {
     return (
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path="/admin/users" element={<Users/>}/>
                 <Route path="/admin/statistics" element={<Statistics/>}/>
                 <Route path="/admin/recipes" element={<Recipes/>}/>
+                <Route path="/admin/settings" element={<SettingsPage/>}/>
 
                 <Route path="/header" element={<Header/>}/>
                 <Route path="/footer" element={<Footer/>}/>

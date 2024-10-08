@@ -11,7 +11,6 @@ const Users = () => {
     const [menuOpen, setMenuOpen] = useState(null);
     const [allUsers, setAllUsers] = useState([]);
 
-    // Fetch users when the component mounts
     useEffect(() => {
         const fetchUsers = async () => {
             try {
@@ -21,8 +20,8 @@ const Users = () => {
                 console.error('Fetch failed:', error.message);
             }
         };
-        fetchUsers(); // Call the fetch function
-    }, []); // Empty dependency array to run only once when the component mounts
+        fetchUsers();
+    }, []);
 
     const blockedUsers = allUsers.filter(user => user.status === 'blocked');
     const deletedUsers = allUsers.filter(user => user.status === 'deleted');
@@ -49,14 +48,12 @@ const Users = () => {
                         <div>{user.email}</div>
                         <div className="user-recipe-number">{user.recipes}</div>
 
-                        {/* Status with color button */}
                         <div>
                             <button className={`status-btn ${user.status.toLowerCase()}`}>
                                 {user.status}
                             </button>
                         </div>
 
-                        {/* Actions menu */}
                         <div className="user-options">
                             <button
                                 className="options-btn"
@@ -108,7 +105,6 @@ const Users = () => {
                         </span>
                     </div>
 
-                    {/* Render User List */}
                     {renderUserList()}
                 </div>
             </div>

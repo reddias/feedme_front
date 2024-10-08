@@ -37,7 +37,7 @@ const Header = ({ user }) => {
                 <div className="admin-header-user-section">
                     <div className="admin-header-user-info">
                         <img src={Person} alt="Person Icon" />
-                        <Link to="/user-profile" className="admin-header-user-name">{name}</Link>
+                        <Link to="/admin/settings" className="admin-header-user-name">{name}</Link>
                     </div>
                 </div>
             </div>
