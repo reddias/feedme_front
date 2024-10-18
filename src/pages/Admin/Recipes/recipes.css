@@ -1,0 +1,121 @@
+/* Content area styling */
+.admin-recipes-content {
+    padding: 30px 90px 100px 370px;
+}
+
+.recipes-tabs-container {
+    margin-left: 35px;
+}
+
+/* Tabs styling */
+.recipes-tabs {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.recipes-tabs .tab {
+    padding: 10px 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    color: #333;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.recipes-tabs .tab:hover {
+    color: #FFBC01;
+}
+
+.recipes-tabs .tab.active {
+    color: #FFBC01;
+    border-bottom: 2px solid #FFBC01;
+}
+
+/* Recipe list container */
+.recipe-list {
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+/* Recipe list header to display column titles */
+.recipe-list-header {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr 1fr 1fr 1fr;
+    background-color: #FFFFFF;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.recipe-options {
+    text-align: center;
+}
+
+/* Individual recipe item row */
+.recipe-item {
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr 1fr 1fr 1fr;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+}
+
+.options-btn {
+    background: none;
+    padding-bottom: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #AAA7A7;
+    transition: 0.3s ease-in-out;
+}
+
+.options-btn:hover {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FFBC01;
+}
+
+/* Options menu dropdown */
+.options-menu {
+    position: absolute;
+    right: 130px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px 5px 10px;
+}
+
+.options-menu span {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.options-menu span:hover {
+    background-color: #f0f0f0;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .admin-recipes-content {
+        padding: 20px;
+    }
+
+    .recipe-item {
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+    }
+
+    .recipe-list-header {
+        display: none;
+    }
+}

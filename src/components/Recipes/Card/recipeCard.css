@@ -1,0 +1,156 @@
+
+.recipe-card {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 20px 0;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.recipe-image {
+    width: 30%;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*border-bottom-left-radius: 20px;*/
+    /*border-top-right-radius: 20px;*/
+}
+
+.recipe-info {
+    width: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.recipe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recipe-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.recipe-creator {
+    font-size: 14px;
+    color: #555;
+    margin: 23px 10px 0 auto;
+    text-align: right;
+}
+
+.recipe-description {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0;
+    flex-grow: 1;
+}
+
+.recipe-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.recipe-stats {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.recipe-stats:hover {
+    color: #FFBC01;
+}
+
+.dropdown {
+    position: absolute;
+    /*bottom: 20px;*/
+    right: 20px;
+}
+
+.dropdown-toggle {
+    background: none;
+    /*border: none;*/
+    font-size: 24px;
+    cursor: pointer;
+    color: #bbb;
+}
+
+.dropdown-toggle:hover {
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #FFBC01;
+    transition: color 0.3s;
+}
+
+.dropdown-menu {
+    width: 145px;
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    list-style: none;
+    padding: 5px 7px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu li {
+    font-size: 12px;
+    padding: 10px 10px;
+    cursor: pointer;
+    border-radius: inherit;
+    transition: background-color 0.2s;
+}
+
+
+.dropdown-menu li:hover {
+    background-color: #f4f4f4;
+}
+
+.no-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #ddd;
+    color: #888;
+    font-size: 14px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .recipe-card {
+        flex-direction: column;
+    }
+
+    .recipe-image {
+        width: 100%;
+    }
+
+    .recipe-info {
+        width: 100%;
+    }
+
+    .dropdown {
+        right: 10px;
+        bottom: 10px;
+    }
+}

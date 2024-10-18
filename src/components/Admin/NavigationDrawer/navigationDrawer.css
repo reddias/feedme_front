@@ -1,0 +1,76 @@
+/* Container for the entire navigation drawer */
+.drawer-container {
+    position: fixed;
+    width: 250px;
+    height: 100vh;
+    background-color: #FFFFFF; /* Dark background for the drawer */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+/* Logo styling at the top */
+.drawer-logo {
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+.drawer-logo-img {
+    width: 150px; /* Adjust the logo size */
+}
+
+/* List of menu items */
+.drawer-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Make the list grow to fill available space */
+}
+
+/* Individual menu item */
+.drawer-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    color: #161616;
+    transition: color 0.3s ease;
+    border-radius: 10px;
+}
+
+/* Active menu item highlighted in yellow */
+.drawer-menu-item.active {
+    color: #FFBC01; /* Yellow background for active item */
+    font-weight: 500;
+}
+
+
+/* Menu icon styling */
+.drawer-menu-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+}
+
+/* Menu text styling */
+.drawer-menu-text {
+    font-size: 18px;
+}
+
+/* Responsive drawer for smaller screens */
+@media (max-width: 768px) {
+    .drawer-container {
+        width: 200px;
+    }
+
+    .drawer-menu-text {
+        font-size: 16px;
+    }
+
+    .drawer-logo-img {
+        width: 120px;
+    }
+}

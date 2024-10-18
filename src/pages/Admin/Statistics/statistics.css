@@ -1,0 +1,83 @@
+.stats-spacing {
+    margin-top: 40px;
+}
+
+.stats-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+}
+
+.stats-tile {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 30px 30px 10px 30px;
+    text-align: left;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stats-tile h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+}
+
+.stats-individual {
+    font-size: 20px;
+    margin: 12px 5px;
+}
+
+.stats-tile li {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #181818;
+}
+
+.stats-recipes-by-status {
+    display: flex;
+}
+
+.stats-recipes-by-status-count {
+    margin-left: 5px;
+    font-weight: bolder;
+    color: #333333
+}
+
+.stats-user-list {
+    display: flex;
+}
+
+.stats-user-list-count {
+    margin-left: 5px;
+    font-weight: bolder;
+    color: #333333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.stats-user-top {
+    display: flex;
+}
+
+.stats-user-top-count {
+    margin-left: 5px;
+    font-weight: bolder;
+    color: #333333;
+}
+
+.stats-most-popular-recipe {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stats-most-popular-recipe-loading {
+    padding-top: 107px;
+    padding-left: 10px;
+    padding-bottom: 107px;
+}

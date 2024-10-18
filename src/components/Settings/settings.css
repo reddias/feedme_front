@@ -1,0 +1,50 @@
+.settings-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.settings-header h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #333;
+}
+
+.edit-button {
+    background-color: transparent;
+    color: #FFBC01;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: transparent;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.settings-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.info-item label {
+    font-weight: bold;
+    margin-right: 10px;
+}
