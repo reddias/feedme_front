@@ -11,7 +11,7 @@ const Statistics = () => {
 
     // State to store fetched statistics data
     const [statsData, setStatsData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loadingStats, setLoadingStats] = useState(true);  // Loading state for API data
 
     // Fetch statistics data
     useEffect(() => {
@@ -19,24 +19,16 @@ const Statistics = () => {
             try {
                 const data = await fetchStatistics();
                 setStatsData(data); // Store fetched data
-                setLoading(false);
             } catch (error) {
                 console.error('Failed to fetch statistics:', error.message);
-                setLoading(false);
+            } finally {
+                setLoadingStats(false); // Stop loading
             }
         };
         fetchStats();
     }, []);
 
-    if (loading) {
-        return <p>Loading statistics...</p>;
-    }
-
-    if (!statsData) {
-        return <p>No statistics available</p>;
-    }
-
-    // Destructure fetched data
+    // Destructure fetched data if available
     const {
         recipes_count,
         recipes_view_count,
@@ -44,7 +36,7 @@ const Statistics = () => {
         top_users_by_recipe_count,
         most_viewed_recipe,
         recipe_status_count
-    } = statsData;
+    } = statsData || {};
 
     return (
         <div>
@@ -59,13 +51,21 @@ const Statistics = () => {
                     {/* Recipes count */}
                     <div className="stats-tile">
                         <h3>Recipes count</h3>
-                        <p className='stats-individual'>{recipes_count}</p>
+                        {loadingStats ? (
+                            <p>Loading...</p>
+                        ) : (
+                            <p className='stats-individual'>{recipes_count}</p>
+                        )}
                     </div>
 
                     {/* Recipes views */}
                     <div className="stats-tile">
                         <h3>Recipes views</h3>
-                        <p className='stats-individual'>{recipes_view_count}</p>
+                        {loadingStats ? (
+                            <p>Loading...</p>
+                        ) : (
+                            <p className='stats-individual'>{recipes_view_count}</p>
+                        )}
                     </div>
                 </div>
 
@@ -74,61 +74,75 @@ const Statistics = () => {
                     {/* Recipes by Status */}
                     <div className="stats-tile">
                         <h3>Recipes by Status</h3>
-                        <ul className="stats-recipes-by-status-list">
-                            {recipe_status_count.map((recipeStatus, index) => (
-                                <li key={index}>
-                                    <div className="stats-recipes-by-status">
-                                        <div>
-                                            {recipeStatus.status.charAt(0).toUpperCase() + recipeStatus.status.slice(1)}:
+                        {loadingStats ? (
+                            <p>Loading...</p>
+                        ) : (
+                            <ul className="stats-recipes-by-status-list">
+                                {recipe_status_count.map((recipeStatus, index) => (
+                                    <li key={index}>
+                                        <div className="stats-recipes-by-status">
+                                            <div>
+                                                {recipeStatus.status.charAt(0).toUpperCase() + recipeStatus.status.slice(1)}:
+                                            </div>
+                                            <div className="stats-recipes-by-status-count">
+                                                {recipeStatus.recipe_status_count}
+                                            </div>
                                         </div>
-                                        <div className="stats-recipes-by-status-count">
-                                            {recipeStatus.recipe_status_count}
-                                        </div>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
 
                     {/* Users by Status */}
                     <div className="stats-tile">
                         <h3>Users</h3>
-                        <ul>
-                            {users_status_count.map((userStatus, index) => (
-                                <li key={index} className="stats-user-list">
-                                    <div>
-                                        {userStatus.status.charAt(0).toUpperCase() + userStatus.status.slice(1)}:
-                                    </div>
-                                    <div className="stats-user-list-count">
-                                        {userStatus.users_status_count}
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
+                        {loadingStats ? (
+                            <p>Loading...</p>
+                        ) : (
+                            <ul>
+                                {users_status_count.map((userStatus, index) => (
+                                    <li key={index} className="stats-user-list">
+                                        <div>
+                                            {userStatus.status.charAt(0).toUpperCase() + userStatus.status.slice(1)}:
+                                        </div>
+                                        <div className="stats-user-list-count">
+                                            {userStatus.users_status_count}
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
 
                     {/* Most Active Users */}
                     <div className="stats-tile">
                         <h3>Most active users (by recipe)</h3>
-                        <ul>
-                            {top_users_by_recipe_count.map((user, index) => (
-                                <li key={index} className="stats-user-top">
-                                    <div>
-                                        {user.name}:
-                                    </div>
-                                    <div className="stats-user-top-count">
-                                        {user.recipe_number}
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
+                        {loadingStats ? (
+                            <p>Loading...</p>
+                        ) : (
+                            <ul>
+                                {top_users_by_recipe_count.map((user, index) => (
+                                    <li key={index} className="stats-user-top">
+                                        <div>
+                                            {user.name}:
+                                        </div>
+                                        <div className="stats-user-top-count">
+                                            {user.recipe_number}
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                 </div>
 
                 {/* Third Row - Most Viewed Recipe */}
                 <div className="stats-most-popular-recipe">
-                    {most_viewed_recipe && (
-                        <RecipeCard recipe={most_viewed_recipe} isAdmin={1} />
+                    {loadingStats ? (
+                        <p className="stats-most-popular-recipe-loading">Loading most viewed recipe...</p>
+                    ) : (
+                        most_viewed_recipe && <RecipeCard recipe={most_viewed_recipe} isAdmin={1} />
                     )}
                 </div>
             </div>

@@ -8,9 +8,8 @@ import './header.css';
 const Header = ({user}) => {
     const [searchQuery, setSearchQuery] = useState('');
 
-    const name = user.data.full_name;
+    const name = user?.data?.full_name;
 
-    console.log(name);
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
     };

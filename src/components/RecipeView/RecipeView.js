@@ -71,7 +71,7 @@ const RecipeView = ({recipe}) => {
 
                     {/* Footer */}
                     <div className="recipe-footer-view">
-                        <span>Cooking Time: {recipe.cooking_time} minutes</span>
+                        <span>Cooking Time: {recipe.cooking_time}</span>
                     </div>
                 </div>
             </div>

@@ -32,11 +32,11 @@ const Comments = ({comments, recipeId}) => {
 
             {/* List of Comments */}
             <ul className="new-comments-list">
-                {comments.map((comment, index) => (
+                {[...comments].reverse().map((comment, index) => (
                     <li key={index} className="new-comment-item">
                         <div className="new-comment-user-photo">
                             {comment.user.photo_url ? (
-                                <img src={comment.user.photo_url} alt={comment.user.full_name}/>
+                                <img src={comment.user.photo_url} />
                             ) : (
                                 <div className="new-no-photo"></div>
                             )}

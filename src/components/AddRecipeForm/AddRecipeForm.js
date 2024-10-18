@@ -1,19 +1,19 @@
-import React, { useState, useRef } from 'react';
-import { createRecipe } from '../../api/recipes';
+import React, {useRef, useState} from 'react';
+import {createRecipe} from '../../api/recipes';
 import './addRecipeForm.css';
 
 const AddRecipeForm = ({ onClose }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [photo_url, setphoto_url] = useState('');
+    const [photo, setphoto] = useState('');
     const [ingredients, setIngredients] = useState([]);
     const [ingredientName, setIngredientName] = useState('');
     const [ingredientMeasurement, setIngredientMeasurement] = useState('');
-    const [instructions, setInstructions] = useState([]); // Keep instructions as an array
+    const [instructions, setInstructions] = useState([]);
     const [instructionInput, setInstructionInput] = useState('');
 
-    const measurementInputRef = useRef(null); // For focusing on measurement after name
-    const addButtonRef = useRef(null); // For focusing on Add button after measurement
+    const measurementInputRef = useRef(null);
+    const addButtonRef = useRef(null);
 
     // Handle recipe creation
     const handleSubmit = async (e) => {
@@ -29,30 +29,35 @@ const AddRecipeForm = ({ onClose }) => {
         console.log("Recipe created:", {
             title,
             description,
-            photo_url,
+            photo,
             ingredients,
             instructions : JSON.stringify(formattedInstructions)
         });
 
-        // Prepare the recipe data for the API call
         const recipeData = {
             title,
             description,
-            photo_url,
             ingredients,
             instructions : JSON.stringify(formattedInstructions)
         };
 
+        if (photo) {
+            const response = await fetch(photo);
+            const blob = await response.blob();
+
+            recipeData.photo = new File([blob], 'uploaded_image.jpg', {type: blob.type});
+        }
+
         try {
-            const response = await createRecipe(recipeData); // Ensure this function awaits the promise
+            const response = await createRecipe(recipeData);
             console.log("Recipe saved successfully:", response);
 
             setTitle('');
             setDescription('');
-            setphoto_url('');
+            setphoto('');
             setIngredients([]);
             setInstructions([]);
-            onClose(); // Close the modal after successful submission
+            onClose();
         } catch (error) {
             console.error("Error saving the recipe:", error);
         }
@@ -73,7 +78,7 @@ const AddRecipeForm = ({ onClose }) => {
 
     const addInstruction = () => {
         if (instructionInput.trim()) {
-            setInstructions([...instructions, instructionInput.trim()]); // Add instruction as a string
+            setInstructions([...instructions, instructionInput.trim()]);
             setInstructionInput('');
         }
     };
@@ -86,34 +91,34 @@ const AddRecipeForm = ({ onClose }) => {
     const handlePhotoUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setphoto_url(URL.createObjectURL(file)); // Preview the image
+            setphoto(URL.createObjectURL(file)); // Preview the image
         }
     };
 
     const deletePhoto = () => {
-        setphoto_url(''); // Remove the photo URL
+        setphoto('');
     };
 
     const handleNameKeyDown = (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault(); // Prevent form submission
-            measurementInputRef.current.focus(); // Focus on measurement input
+            e.preventDefault();
+            measurementInputRef.current.focus();
         }
     };
 
     const handleMeasurementKeyDown = (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault(); // Prevent form submission
-            addIngredient(); // Add ingredient when Enter is pressed
-            addButtonRef.current.focus(); // Focus on Add button (optional)
+            e.preventDefault();
+            addIngredient();
+            addButtonRef.current.focus();
         }
     };
 
     // Handle enter key on instruction input
     const handleInstructionKeyDown = (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault(); // Prevent form submission
-            addInstruction(); // Add instruction on Enter
+            e.preventDefault();
+            addInstruction();
         }
     };
 
@@ -139,9 +144,9 @@ const AddRecipeForm = ({ onClose }) => {
                         accept="image/*"
                         onChange={handlePhotoUpload}
                     />
-                    {photo_url && (
+                    {photo && (
                         <div className="photo-preview">
-                            <img src={photo_url} alt="Preview" className="photo-thumbnail" />
+                            <img src={photo} alt="Preview" className="photo-thumbnail" />
                             <button type="button" className="remove-photo-button" onClick={deletePhoto}>
                                 Remove Photo
                             </button>
@@ -156,7 +161,7 @@ const AddRecipeForm = ({ onClose }) => {
                         onChange={(e) => setDescription(e.target.value)}
                         required
                         rows={3}
-                        style={{ resize: 'vertical' }} // Allow vertical resizing
+                        style={{ resize: 'vertical' }}
                     />
                 </div>
 
@@ -168,19 +173,19 @@ const AddRecipeForm = ({ onClose }) => {
                             value={ingredientName}
                             onChange={(e) => setIngredientName(e.target.value)}
                             placeholder="Ingredient Name"
-                            onKeyDown={handleNameKeyDown} // Move to measurement on Enter
+                            onKeyDown={handleNameKeyDown}
                         />
                         <input
                             type="text"
-                            ref={measurementInputRef} // Ref for focusing measurement input
+                            ref={measurementInputRef}
                             value={ingredientMeasurement}
                             onChange={(e) => setIngredientMeasurement(e.target.value)}
                             placeholder="Measurement"
-                            onKeyDown={handleMeasurementKeyDown} // Add ingredient on Enter
+                            onKeyDown={handleMeasurementKeyDown}
                         />
                         <button
                             type="button"
-                            ref={addButtonRef} // Ref for focusing Add button
+                            ref={addButtonRef}
                             onClick={addIngredient}
                             className="add-ingredient-button"
                         >
@@ -210,7 +215,7 @@ const AddRecipeForm = ({ onClose }) => {
                             type="text"
                             value={instructionInput}
                             onChange={(e) => setInstructionInput(e.target.value)}
-                            onKeyDown={handleInstructionKeyDown} // Add instruction on Enter
+                            onKeyDown={handleInstructionKeyDown}
                             placeholder="Type an instruction and press Enter"
                         />
                     </div>

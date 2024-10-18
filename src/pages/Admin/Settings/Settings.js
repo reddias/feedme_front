@@ -1,7 +1,7 @@
 import React from 'react';
 import NavigationDrawer from '../../../components/Admin/NavigationDrawer/NavigationDrawer';
 import Header from '../../../components/Admin/Header/Header';
-import {getUserFromLocalStorage} from "../../../utils/authHelper"; // Ensure getRecipes is correctly imported
+import {getUserFromLocalStorage} from "../../../utils/authHelper";
 import './settings.css';
 import photo from "../../../assets/signIn-background.png";
 import Settings from "../../../components/Settings/Settings";
@@ -17,7 +17,7 @@ const Recipes = () => {
                 <div className="admin-user-profile-container">
                     <div className="admin-user-info">
                         <img
-                            src={user?.data?.photo || photo}
+                            src={user?.data?.photo_url || photo}
                             alt="User Profile"
                             className="admin-user-photo"
                         />

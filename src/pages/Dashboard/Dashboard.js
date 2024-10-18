@@ -12,11 +12,10 @@ const Dashboard = () => {
     const navigate = useNavigate();
 
     const [searchTerm, setSearchTerm] = useState('');
-    const [allRecipes, setAllRecipes] = useState([]); // Store all fetched recipes
-    const [popularRecipes, setPopularRecipes] = useState([]); // Store filtered popular recipes
-    const [recipesToShow, setRecipesToShow] = useState(4); // Initial number of popular recipes to show
+    const [allRecipes, setAllRecipes] = useState([]);
+    const [popularRecipes, setPopularRecipes] = useState([]);
+    const [recipesToShow, setRecipesToShow] = useState(4);
 
-    // Fetch all recipes when the component mounts
     useEffect(() => {
         fetchPopularRecipes();
     }, []);
@@ -25,14 +24,12 @@ const Dashboard = () => {
         try {
             const data = await getPopularRecipes();
             setAllRecipes(data.data);
-            // Filter for popular recipes if needed
             setPopularRecipes(data.data);
         } catch (error) {
             console.error('Error fetching recipes:', error);
         }
     };
 
-    // Handle search functionality - redirect to search page with search term
     const handleSearch = () => {
         if (searchTerm.trim()) {
             navigate(`/recipes?query=${encodeURIComponent(searchTerm.trim())}`);

@@ -16,7 +16,6 @@ const RecipeSearchPage = () => {
     const [maxCookingTime, setMaxCookingTime] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // Fetch recipes when the component mounts or when filters change
     useEffect(() => {
         fetchRecipes();
     }, [searchTerm, popularity, maxCookingTime]);
@@ -109,7 +108,6 @@ const RecipeSearchPage = () => {
                     </div>
                 </div>
 
-                {/* Content: Search bar and recipe list */}
                 <div className="content">
                     {/* Search Bar */}
                     <div className="search-bar">
@@ -121,7 +119,6 @@ const RecipeSearchPage = () => {
                         />
                     </div>
 
-                    {/* Recipe List */}
                     {loading ? (
                         <div className="loading">Loading recipes...</div>
                     ) : (
@@ -142,7 +139,6 @@ const RecipeSearchPage = () => {
                 </div>
             </div>
 
-            {/* Footer */}
             <Footer/>
         </>
     );

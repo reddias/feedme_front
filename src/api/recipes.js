@@ -23,6 +23,15 @@ export const getRecipes = async (page = 1, search = '') => {
     }
 };
 
+export const getMyRecipes = async (page = 1, search = '') => {
+    try {
+        const response = await api.get('recipes/myRecipes', { params: { page, search } });
+        return response.data;
+    } catch (error) {
+        handleApiError(error);
+    }
+};
+
 export const getRecipeById = async (id) => {
     try {
         const response = await api.get(`/recipes/${id}`);

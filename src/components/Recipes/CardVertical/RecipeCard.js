@@ -17,12 +17,12 @@ const RecipeCard = ({recipe, isUserRecipe, onDelete}) => {
     } = recipe;
 
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-    const [isModalOpen, setModalOpen] = useState(false); // Modal state
-    const [detailedRecipe, setDetailedRecipe] = useState(null); // State to store fetched recipe details
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [detailedRecipe, setDetailedRecipe] = useState(null);
     const dropdownRef = useRef(null);
 
     const toggleDropdown = (e) => {
-        e.stopPropagation();  // Prevent modal opening on dropdown click
+        e.stopPropagation();
         setDropdownOpen(prevState => !prevState);
     };
 

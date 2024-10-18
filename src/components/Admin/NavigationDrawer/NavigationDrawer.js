@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import './navigationDrawer.css'; // Import the CSS file for styles
-import logo from '../../../assets/logo.svg'; // Replace with your actual logo
-import usersIcon from '../../../assets/usersIcon.svg'; // Replace with your actual icon
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import './navigationDrawer.css';
+import logo from '../../../assets/logo.svg';
+import usersIcon from '../../../assets/usersIcon.svg';
 import statisticsIcon from '../../../assets/statisticsIcon.svg';
 import recipesIcon from '../../../assets/recipesIcon.svg';
 import settingsIcon from '../../../assets/settingsIcon.svg';
@@ -9,24 +10,32 @@ import usersIconActive from '../../../assets/usersIconYellow.svg';
 import statisticsIconActive from '../../../assets/statisticsIconYellow.svg';
 import recipesIconActive from '../../../assets/recipesIconYellow.svg';
 import settingsIconActive from '../../../assets/settingsIconYellow.svg';
-import {useNavigate} from "react-router-dom";
 
 const NavigationDrawer = () => {
-    const [activePage, setActivePage] = useState('users'); // State to track the active page
-
     const navigate = useNavigate();
+    const location = useLocation();
+    const [activePage, setActivePage] = useState('users');
 
     // List of pages with icons and names
     const menuItems = [
-        { id: 'users', name: 'Users', icon: usersIcon, activeIcon: usersIconActive },
-        { id: 'statistics', name: 'Statistics', icon: statisticsIcon, activeIcon: statisticsIconActive },
-        { id: 'recipes', name: 'Recipes', icon: recipesIcon, activeIcon: recipesIconActive },
-        { id: 'settings', name: 'Settings', icon: settingsIcon, activeIcon: settingsIconActive },
+        { id: 'users', name: 'Users', icon: usersIcon, activeIcon: usersIconActive, route: '/admin/users' },
+        { id: 'statistics', name: 'Statistics', icon: statisticsIcon, activeIcon: statisticsIconActive, route: '/admin/statistics' },
+        { id: 'recipes', name: 'Recipes', icon: recipesIcon, activeIcon: recipesIconActive, route: '/admin/recipes' },
+        { id: 'settings', name: 'Settings', icon: settingsIcon, activeIcon: settingsIconActive, route: '/admin/settings' },
     ];
 
-    const handleMenuClick = (id) => {
+    // Update the activePage based on the current route
+    useEffect(() => {
+        const currentPath = location.pathname;
+        const currentPage = menuItems.find(item => item.route === currentPath);
+        if (currentPage) {
+            setActivePage(currentPage.id);
+        }
+    }, [location.pathname]);
+
+    const handleMenuClick = (id, route) => {
         setActivePage(id);
-        navigate('/admin/' + id);
+        navigate(route);
     };
 
     return (
@@ -39,7 +48,7 @@ const NavigationDrawer = () => {
                     <li
                         key={item.id}
                         className={`drawer-menu-item ${activePage === item.id ? 'active' : ''}`}
-                        onClick={() => handleMenuClick(item.id)}
+                        onClick={() => handleMenuClick(item.id, item.route)}
                     >
                         <img
                             src={activePage === item.id ? item.activeIcon : item.icon}

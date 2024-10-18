@@ -28,13 +28,14 @@ const UserProfile = () => {
         }
     };
 
+    console.log(user?.data?.photo_url);
     return (
         <div className="page-container">
             <Header user={user} />
             <div className="user-profile-container">
                 <div className="user-info">
                     <img
-                        src={user?.data?.photo || photo}
+                        src={user?.data?.photo_url || photo}
                         alt="User Profile"
                         className="user-photo"
                     />

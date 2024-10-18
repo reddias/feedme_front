@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import RecipeCard from './Card/RecipeCard';
-import { getRecipes } from '../../api/recipes';
+import {getMyRecipes} from '../../api/recipes';
 import './recipes.css';
 
 const Recipes = ({ isUserPage }) => {
@@ -15,7 +15,7 @@ const Recipes = ({ isUserPage }) => {
     const fetchRecipes = async () => {
         setLoading(true);
         try {
-            const data = await getRecipes(page);
+            const data = await getMyRecipes(page);
             console.log(data);
             setRecipes(data.data);
         } catch (error) {

@@ -3,9 +3,8 @@
     width: 100%;
     max-width: 1400px;
     background-color: transparent;
-    border-radius: 50px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
     overflow: hidden;
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
 }
 
 .recipe-image-view {
@@ -18,8 +17,7 @@
 
 .recipe-image-view img {
     width: 100%;
-    height: auto; /* Changed to auto to maintain aspect ratio */
-    max-height: 400px; /* Set a max-height to prevent overflow */
+    height: 100%;
     object-fit: cover;
 }
 
@@ -123,12 +121,10 @@
     margin-top: 10px;
 }
 
-/* Add margin to separate comments from the recipe view */
 .comments-section {
     margin-top: 20px; /* Add margin above comments section */
 }
 
-/* Media query for responsiveness */
 @media (max-width: 768px) {
     .recipe-view {
         flex-direction: column;
